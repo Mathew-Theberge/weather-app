@@ -8,59 +8,105 @@
     <body>
         <header>
             <form action="#">
-                <input type="text" name="search" id="search" />
-                <button>Search</button>
+                <input
+                    type="text"
+                    name="search"
+                    id="search"
+                    placeholder="Search Location"
+                />
+                <!-- <button id="searchBtn">
+                    <svg
+                        fill="#000000"
+                        height="auto"
+                        width="auto"
+                        version="1.1"
+                        id="Capa_1"
+                        xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink"
+                        viewBox="0 0 488.4 488.4"
+                        xml:space="preserve"
+                    >
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g
+                            id="SVGRepo_tracerCarrier"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        ></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <g>
+                                <g>
+                                    <path
+                                        d="M0,203.25c0,112.1,91.2,203.2,203.2,203.2c51.6,0,98.8-19.4,134.7-51.2l129.5,129.5c2.4,2.4,5.5,3.6,8.7,3.6 s6.3-1.2,8.7-3.6c4.8-4.8,4.8-12.5,0-17.3l-129.6-129.5c31.8-35.9,51.2-83,51.2-134.7c0-112.1-91.2-203.2-203.2-203.2 S0,91.15,0,203.25z M381.9,203.25c0,98.5-80.2,178.7-178.7,178.7s-178.7-80.2-178.7-178.7s80.2-178.7,178.7-178.7 S381.9,104.65,381.9,203.25z"
+                                    ></path>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+                </button> -->
             </form>
-            <button id="fahrenheitBtn">&deg;F</button>
-            <button id="celsiusBtn">&deg;C</button>
+            <div id="unitBtnContainer">
+                <button id="fahrenheitBtn" class="activeBtn">&deg;F</button>
+                <button id="celsiusBtn">&deg;C</button>
+            </div>
         </header>
 
-        <section>
-            <div id="sideContent">
-                <h1>Oshawa</h1>
-                <h3>Cloudy</h3>
-            </div>
-            <div id="mainContent">
-                <div id="lowTemp">Low<br />-1</div>
-                <div id="temp">3</div>
-                <img src="./images/cloudy.svg" alt="" />
-                <div id="highTemp">High<br />4</div>
-                <div id="feelsLike">
-                    feels Like<br />
-                    -4
+        <section id="mainSection">
+            <section id="topSection">
+                <div id="sideContent">
+                    <h1>Newyork City, Nihalpur Mundi, Indore, MP, India</h1>
+                    <h3>Cloudy</h3>
                 </div>
-            </div>
-            <div id="bottomContent">
-                <div class="weeklyForecastCard">
-                    <div class="weeklyForecastDate">Sep 3</div>
-                    <img
-                        src="./images/cloudy.svg"
-                        alt=""
-                        class="weeklyForecastIcon"
-                    />
-                    <div class="weeklyForecastTemp">7</div>
+                <div id="mainContent">
+                    <div id="lowTemp">
+                        <span>Low</span><br /><span>-1</span>
+                    </div>
+                    <div class="container-column">
+                        <div id="temp">3</div>
+                        <img src="./images/cloudy.svg" alt="" />
+                        <div id="feelsLike">
+                            <span>Feels Like</span> <br />
+                            <span>-4</span>
+                        </div>
+                    </div>
+                    <div id="highTemp">
+                        <span>High</span><br /><span>4</span>
+                    </div>
                 </div>
+            </section>
 
-                <div class="weeklyForecastCard">
-                    <div class="weeklyForecastDate">Sep 3</div>
-                    <img
-                        src="./images/cloudy.svg"
-                        alt=""
-                        class="weeklyForecastIcon"
-                    />
-                    <div class="weeklyForecastTemp">7</div>
-                </div>
+            <section id="bottomSection">
+                <div id="bottomContent">
+                    <div class="weeklyForecastCard">
+                        <div class="weeklyForecastDate">Sep 3</div>
+                        <img
+                            src="./images/cloudy.svg"
+                            alt=""
+                            class="weeklyForecastIcon"
+                        />
+                        <div class="weeklyForecastTemp">7</div>
+                    </div>
 
-                <div class="weeklyForecastCard">
-                    <div class="weeklyForecastDate">Sep 3</div>
-                    <img
-                        src="./images/cloudy.svg"
-                        alt=""
-                        class="weeklyForecastIcon"
-                    />
-                    <div class="weeklyForecastTemp">7</div>
+                    <div class="weeklyForecastCard">
+                        <div class="weeklyForecastDate">Sep 3</div>
+                        <img
+                            src="./images/cloudy.svg"
+                            alt=""
+                            class="weeklyForecastIcon"
+                        />
+                        <div class="weeklyForecastTemp">7</div>
+                    </div>
+
+                    <div class="weeklyForecastCard">
+                        <div class="weeklyForecastDate">Sep 3</div>
+                        <img
+                            src="./images/cloudy.svg"
+                            alt=""
+                            class="weeklyForecastIcon"
+                        />
+                        <div class="weeklyForecastTemp">7</div>
+                    </div>
                 </div>
-            </div>
+            </section>
         </section>
     </body>
 </html>
