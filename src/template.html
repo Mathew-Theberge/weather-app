@@ -5,5 +5,62 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Weather Cast</title>
     </head>
-    <body></body>
+    <body>
+        <header>
+            <form action="#">
+                <input type="text" name="search" id="search" />
+                <button>Search</button>
+            </form>
+            <button id="fahrenheitBtn">&deg;F</button>
+            <button id="celsiusBtn">&deg;C</button>
+        </header>
+
+        <section>
+            <div id="sideContent">
+                <h1>Oshawa</h1>
+                <h3>Cloudy</h3>
+            </div>
+            <div id="mainContent">
+                <div id="lowTemp">Low<br />-1</div>
+                <div id="temp">3</div>
+                <img src="./images/cloudy.svg" alt="" />
+                <div id="highTemp">High<br />4</div>
+                <div id="feelsLike">
+                    feels Like<br />
+                    -4
+                </div>
+            </div>
+            <div id="bottomContent">
+                <div class="weeklyForecastCard">
+                    <div class="weeklyForecastDate">Sep 3</div>
+                    <img
+                        src="./images/cloudy.svg"
+                        alt=""
+                        class="weeklyForecastIcon"
+                    />
+                    <div class="weeklyForecastTemp">7</div>
+                </div>
+
+                <div class="weeklyForecastCard">
+                    <div class="weeklyForecastDate">Sep 3</div>
+                    <img
+                        src="./images/cloudy.svg"
+                        alt=""
+                        class="weeklyForecastIcon"
+                    />
+                    <div class="weeklyForecastTemp">7</div>
+                </div>
+
+                <div class="weeklyForecastCard">
+                    <div class="weeklyForecastDate">Sep 3</div>
+                    <img
+                        src="./images/cloudy.svg"
+                        alt=""
+                        class="weeklyForecastIcon"
+                    />
+                    <div class="weeklyForecastTemp">7</div>
+                </div>
+            </div>
+        </section>
+    </body>
 </html>
