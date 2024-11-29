@@ -18,7 +18,7 @@ async function getWeatherObj(location, unit) {
 
 export async function setWeatherObj(location, unit) {
     const weatherData = await getWeatherObj(location, unit);
-    weatherDataObj.dailyConditions.location = weatherData.address;
+    weatherDataObj.dailyConditions.location = weatherData.resolvedAddress;
     weatherDataObj.dailyConditions.temp = weatherData.currentConditions.temp;
     weatherDataObj.dailyConditions.feelslike =
         weatherData.currentConditions.feelslike;
@@ -36,7 +36,8 @@ export async function setWeatherObj(location, unit) {
         if (index === 0) {
             return;
         }
-        weatherDataObj.weeklyCondition.dates.push(day.datetime);
+        let formattedDate = convertDates(day.datetime);
+        weatherDataObj.weeklyCondition.dates.push(formattedDate);
     });
 
     weatherData.days.forEach((day, index) => {
@@ -53,5 +54,31 @@ export async function setWeatherObj(location, unit) {
         weatherDataObj.weeklyCondition.icons.push(day.icon);
     });
     console.log(weatherDataObj);
+    console.log(weatherData);
     return weatherDataObj;
 }
+
+function convertDates(date) {
+    let newMonth = date.slice(5, 7) - 1;
+    let day = date.slice(8, 10);
+    if (day[0] === "0") {
+        day = day.slice(1, 2);
+    }
+    newMonth = arrayOfMonths[newMonth];
+    return `${newMonth} ${day}`;
+}
+
+const arrayOfMonths = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+];
