@@ -1,3 +1,2 @@
 import "./style.css";
-
-console.log("test");
+import "./api-logic.js";
