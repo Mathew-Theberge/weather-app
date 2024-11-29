@@ -28,6 +28,10 @@ export async function setWeatherObj(location, unit) {
     weatherDataObj.dailyConditions.minTemp = weatherData.days[0].tempmin;
     weatherDataObj.dailyConditions.icon = weatherData.currentConditions.icon;
 
+    weatherDataObj.weeklyCondition.dates = [];
+    weatherDataObj.weeklyCondition.icons = [];
+    weatherDataObj.weeklyCondition.temps = [];
+
     weatherData.days.forEach((day, index) => {
         if (index === 0) {
             return;
@@ -48,5 +52,6 @@ export async function setWeatherObj(location, unit) {
         }
         weatherDataObj.weeklyCondition.icons.push(day.icon);
     });
+    console.log(weatherDataObj);
     return weatherDataObj;
 }
