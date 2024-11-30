@@ -9,6 +9,18 @@ import snow from "./images/weatherIcons/snow.svg";
 import clearDay from "./images/weatherIcons/clear-day.svg";
 import clearNight from "./images/weatherIcons/clear-night.svg";
 
+import clearNightBG from "./images/backgroundImages/clearNight.jpg";
+import partlyCloudyNightBG from "./images/backgroundImages/partlyCloudyNight.jpg";
+import partlyCloudyDayBG from "./images/backgroundImages/partlyCloudyDay.jpg";
+import cloudyBG from "./images/backgroundImages/cloudy.jpg";
+import rainBG from "./images/backgroundImages/rain.jpg";
+import clearDayBG from "./images/backgroundImages/clearDay.jpg";
+import snowBG from "./images/backgroundImages/snow.jpg";
+import fogBG from "./images/backgroundImages/fog.jpg";
+import windBG from "./images/backgroundImages/wind.jpg";
+
+const body = document.querySelector("body");
+
 const form = document.querySelector("form");
 const input = document.querySelector("#search");
 
@@ -72,6 +84,7 @@ function renderWeatherData(location, unit) {
         highTemp.textContent = weatherDataObj.dailyConditions.maxTemp + "°";
         feelsLike.textContent = weatherDataObj.dailyConditions.feelslike + "°";
         setIcon(icon, weatherDataObj.dailyConditions.icon);
+        setBackgroundImg(weatherDataObj.dailyConditions.icon);
 
         weeklyForecastDates.forEach((date, index) => {
             date.textContent = weatherDataObj.weeklyCondition.dates[index];
@@ -131,10 +144,44 @@ function setIcon(imgElement, icon) {
             imgElement.src = wind;
             break;
         case "clear-day":
+            console.log(icon);
             imgElement.src = clearDay;
             break;
         case "clear-night":
             imgElement.src = clearNight;
+            break;
+        default:
+    }
+}
+
+function setBackgroundImg(icon) {
+    switch (icon) {
+        case "partly-cloudy-night":
+            body.style.backgroundImage = `url(${partlyCloudyNightBG})`;
+            break;
+        case "partly-cloudy-day":
+            body.style.backgroundImage = `url(${partlyCloudyDayBG})`;
+            break;
+        case "cloudy":
+            body.style.backgroundImage = `url(${cloudyBG})`;
+            break;
+        case "snow":
+            body.style.backgroundImage = `url(${snowBG})`;
+            break;
+        case "rain":
+            body.style.backgroundImage = `url(${rainBG})`;
+            break;
+        case "fog":
+            body.style.backgroundImage = `url(${fogBG})`;
+            break;
+        case "wind":
+            body.style.backgroundImage = `url(${windBG})`;
+            break;
+        case "clear-day":
+            body.style.backgroundImage = `url(${clearDayBG})`;
+            break;
+        case "clear-night":
+            body.style.backgroundImage = `url(${clearNightBG})`;
             break;
     }
 }

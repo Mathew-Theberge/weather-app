@@ -5,8 +5,8 @@
 }
 
 body {
-    min-height: 100svh;
     flex-direction: column;
+    min-height: 100svh;
     display: flex;
     background-repeat: no-repeat;
     background-size: cover;
@@ -37,7 +37,7 @@ header {
 }
 
 form {
-    height: 40px;
+    height: 50px;
     display: flex;
 }
 
@@ -80,6 +80,8 @@ input {
     border-radius: 999px;
     border: none;
     padding-left: 1rem;
+    font-size: 1.25rem;
+    font-weight: 500;
 }
 
 #fahrenheitBtn,
@@ -193,8 +195,8 @@ input {
     backdrop-filter: blur(6px);
     border-top: 1px solid black;
     border-bottom: 1px solid black;
-    margin-bottom: 6rem;
     padding: 6px 0;
+    margin-bottom: 6rem;
 }
 
 .logoContainer {
