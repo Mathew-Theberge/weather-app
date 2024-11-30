@@ -122,6 +122,7 @@ input {
     align-items: center;
     gap: 8rem;
     padding: 1.5rem 4rem;
+    margin: 1rem;
 }
 
 .container-column {

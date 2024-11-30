@@ -1,2 +1,3 @@
 import "./style.css";
-import "./api-logic.js";
+import "./DOM";
+// import { setWeatherObj } from "./api-logic";
