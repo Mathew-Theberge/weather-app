@@ -8,7 +8,6 @@ body {
     min-height: 100svh;
     flex-direction: column;
     display: flex;
-    background-image: url("./images/sunnyBackground.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     font-family:
@@ -29,14 +28,15 @@ body {
 
 header {
     padding: 1rem;
-    display: grid;
-    grid-template-columns: 1fr auto;
+    display: flex;
     align-items: center;
+    justify-content: space-between;
     border-bottom: 1px solid black;
+    background-color: rgba(0, 0, 0, 0.233);
+    backdrop-filter: blur(6px);
 }
 
 form {
-    justify-self: center;
     height: 40px;
     display: flex;
 }
@@ -58,8 +58,6 @@ form {
 #bottomContent {
     display: flex;
     gap: 2.5rem;
-    margin: 2rem;
-    margin-bottom: 8rem;
     justify-content: center;
 }
 
@@ -120,9 +118,12 @@ input {
 #mainContent {
     display: flex;
     align-items: center;
+    justify-self: stretch;
     gap: 8rem;
     padding: 1.5rem 4rem;
     margin: 1rem;
+    background-color: rgba(0, 0, 0, 0.233);
+    backdrop-filter: blur(6px);
 }
 
 .container-column {
@@ -159,11 +160,17 @@ input {
 }
 
 .weeklyForecastCard > div:last-child {
-    font-size: 1.5rem;
+    font-size: 2rem;
+}
+
+.weeklyForecastCard > div:first-child {
+    font-size: 1.25rem;
+    text-wrap: nowrap;
 }
 
 .weeklyForecastCard {
-    width: 60px;
+    width: 100px;
+    min-width: 50px;
 }
 
 /* these two statements are to help better center the svg icons */
@@ -172,5 +179,37 @@ input {
 }
 
 .weeklyForecastIcon {
-    margin-bottom: -12px;
+    margin: -8px 0;
+}
+
+#forecastMessage {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.bottomSectionContainer {
+    background-color: rgba(0, 0, 0, 0.233);
+    backdrop-filter: blur(6px);
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    margin-bottom: 6rem;
+    padding: 6px 0;
+}
+
+.logoContainer {
+    display: flex;
+    align-items: center;
+}
+
+.logoMessage {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.logoContainer span:first-child {
+    color: rgb(255, 255, 81);
+}
+.logoContainer :last-child {
+    color: rgb(119, 218, 94);
 }
