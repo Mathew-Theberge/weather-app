@@ -161,3 +161,16 @@ input {
 .weeklyForecastCard > div:last-child {
     font-size: 1.5rem;
 }
+
+.weeklyForecastCard {
+    width: 60px;
+}
+
+/* these two statements are to help better center the svg icons */
+.dailyIcon {
+    margin-bottom: -2rem;
+}
+
+.weeklyForecastIcon {
+    margin-bottom: -12px;
+}

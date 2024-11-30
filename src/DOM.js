@@ -23,7 +23,12 @@ const lowTemp = document.querySelector("#lowTemp span:last-child");
 const icon = document.querySelector(".dailyIcon");
 const feelsLike = document.querySelector("#feelsLike span:last-child");
 
+const weeklyForecastDates = document.querySelectorAll(".weeklyForecastDate");
+const weeklyForecastIcons = document.querySelectorAll(".weeklyForecastIcon");
+const weeklyForecastTemps = document.querySelectorAll(".weeklyForecastTemp");
+
 const weatherDataNumbersOnlyArray = [temp, highTemp, lowTemp, feelsLike];
+weeklyForecastTemps.forEach((node) => weatherDataNumbersOnlyArray.push(node));
 
 let userUnitPreference = "metric";
 let searchLocation = "Toronto";
@@ -67,6 +72,19 @@ function renderWeatherData(location, unit) {
         highTemp.textContent = weatherDataObj.dailyConditions.maxTemp + "°";
         feelsLike.textContent = weatherDataObj.dailyConditions.feelslike + "°";
         setIcon(icon, weatherDataObj.dailyConditions.icon);
+
+        weeklyForecastDates.forEach((date, index) => {
+            date.textContent = weatherDataObj.weeklyCondition.dates[index];
+        });
+
+        weeklyForecastIcons.forEach((icon, index) => {
+            setIcon(icon, weatherDataObj.weeklyCondition.icons[index]);
+        });
+
+        weeklyForecastTemps.forEach((temp, index) => {
+            temp.textContent =
+                weatherDataObj.weeklyCondition.temps[index] + "°";
+        });
     });
 }
 
