@@ -1,3 +1,14 @@
+import { setWeatherObj } from "./api-logic";
+import partlyCloudyNight from "./images/weatherIcons/partly-cloudy-night.svg";
+import partlyCloudyDay from "./images/weatherIcons/partly-cloudy-day.svg";
+import cloudy from "./images/weatherIcons/cloudy.svg";
+import rain from "./images/weatherIcons/rain.svg";
+import fog from "./images/weatherIcons/fog.svg";
+import wind from "./images/weatherIcons/wind.svg";
+import snow from "./images/weatherIcons/snow.svg";
+import clearDay from "./images/weatherIcons/clear-day.svg";
+import clearNight from "./images/weatherIcons/clear-night.svg";
+
 const form = document.querySelector("form");
 const input = document.querySelector("#search");
 
@@ -16,8 +27,6 @@ const weatherDataNumbersOnlyArray = [temp, highTemp, lowTemp, feelsLike];
 
 let userUnitPreference = "metric";
 let searchLocation = "Toronto";
-
-import { setWeatherObj } from "./api-logic";
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -57,6 +66,7 @@ function renderWeatherData(location, unit) {
         lowTemp.textContent = weatherDataObj.dailyConditions.minTemp + "°";
         highTemp.textContent = weatherDataObj.dailyConditions.maxTemp + "°";
         feelsLike.textContent = weatherDataObj.dailyConditions.feelslike + "°";
+        setIcon(icon, weatherDataObj.dailyConditions.icon);
     });
 }
 
@@ -77,4 +87,36 @@ function convertWeatherNumbersToNewUnit(array, convertingFunction) {
                 element.textContent.slice(0, element.textContent.length - 1),
             ) + "°";
     });
+}
+
+function setIcon(imgElement, icon) {
+    switch (icon) {
+        case "partly-cloudy-night":
+            imgElement.src = partlyCloudyNight;
+            break;
+        case "partly-cloudy-day":
+            imgElement.src = partlyCloudyDay;
+            break;
+        case "cloudy":
+            imgElement.src = cloudy;
+            break;
+        case "snow":
+            imgElement.src = snow;
+            break;
+        case "rain":
+            imgElement.src = rain;
+            break;
+        case "fog":
+            imgElement.src = fog;
+            break;
+        case "wind":
+            imgElement.src = wind;
+            break;
+        case "clear-day":
+            imgElement.src = clearDay;
+            break;
+        case "clear-night":
+            imgElement.src = clearNight;
+            break;
+    }
 }
