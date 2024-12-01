@@ -7,9 +7,11 @@
 body {
     flex-direction: column;
     min-height: 100svh;
+    min-width: min-content;
     display: flex;
     background-repeat: no-repeat;
     background-size: cover;
+    background-image: url(./images/backgroundImages/partlyCloudyDay.jpg);
     font-family:
         system-ui,
         -apple-system,

@@ -18,6 +18,8 @@ import clearDayBG from "./images/backgroundImages/clearDay.jpg";
 import snowBG from "./images/backgroundImages/snow.jpg";
 import fogBG from "./images/backgroundImages/fog.jpg";
 import windBG from "./images/backgroundImages/wind.jpg";
+import loading from "./images/loading.svg";
+import error from "./images/error.svg";
 
 const body = document.querySelector("body");
 
@@ -44,6 +46,7 @@ weeklyForecastTemps.forEach((node) => weatherDataNumbersOnlyArray.push(node));
 
 let userUnitPreference = "metric";
 let searchLocation = "Toronto";
+let isErrorActive = false;
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -53,6 +56,9 @@ form.addEventListener("submit", (e) => {
 });
 
 celsiusBtn.addEventListener("click", () => {
+    if (isErrorActive) {
+        return;
+    }
     userUnitPreference = "metric";
     if (!celsiusBtn.classList.contains("activeBtn"))
         convertWeatherNumbersToNewUnit(
@@ -64,6 +70,9 @@ celsiusBtn.addEventListener("click", () => {
 });
 
 fahrenheitBtn.addEventListener("click", () => {
+    if (isErrorActive) {
+        return;
+    }
     userUnitPreference = "us";
     if (!fahrenheitBtn.classList.contains("activeBtn"))
         convertWeatherNumbersToNewUnit(
@@ -76,29 +85,44 @@ fahrenheitBtn.addEventListener("click", () => {
 
 function renderWeatherData(location, unit) {
     const response = setWeatherObj(location, unit);
-    response.then((weatherDataObj) => {
-        locationElement.textContent = weatherDataObj.dailyConditions.location;
-        conditions.textContent = weatherDataObj.dailyConditions.conditions;
-        temp.textContent = weatherDataObj.dailyConditions.temp + "°";
-        lowTemp.textContent = weatherDataObj.dailyConditions.minTemp + "°";
-        highTemp.textContent = weatherDataObj.dailyConditions.maxTemp + "°";
-        feelsLike.textContent = weatherDataObj.dailyConditions.feelslike + "°";
-        setIcon(icon, weatherDataObj.dailyConditions.icon);
-        setBackgroundImg(weatherDataObj.dailyConditions.icon);
+    setLoadingIcon();
+    response
+        .then((weatherDataObj) => {
+            isErrorActive = false;
+            locationElement.textContent =
+                weatherDataObj.dailyConditions.location;
+            conditions.textContent = weatherDataObj.dailyConditions.conditions;
+            temp.textContent = weatherDataObj.dailyConditions.temp + "°";
+            lowTemp.textContent = weatherDataObj.dailyConditions.minTemp + "°";
+            highTemp.textContent = weatherDataObj.dailyConditions.maxTemp + "°";
+            feelsLike.textContent =
+                weatherDataObj.dailyConditions.feelslike + "°";
+            setIcon(icon, weatherDataObj.dailyConditions.icon);
+            setBackgroundImg(weatherDataObj.dailyConditions.icon);
 
-        weeklyForecastDates.forEach((date, index) => {
-            date.textContent = weatherDataObj.weeklyCondition.dates[index];
-        });
+            weeklyForecastDates.forEach((date, index) => {
+                date.textContent = weatherDataObj.weeklyCondition.dates[index];
+            });
 
-        weeklyForecastIcons.forEach((icon, index) => {
-            setIcon(icon, weatherDataObj.weeklyCondition.icons[index]);
-        });
+            weeklyForecastIcons.forEach((icon, index) => {
+                setIcon(icon, weatherDataObj.weeklyCondition.icons[index]);
+            });
 
-        weeklyForecastTemps.forEach((temp, index) => {
-            temp.textContent =
-                weatherDataObj.weeklyCondition.temps[index] + "°";
+            weeklyForecastTemps.forEach((temp, index) => {
+                temp.textContent =
+                    weatherDataObj.weeklyCondition.temps[index] + "°";
+            });
+        })
+        .catch(() => {
+            setLoadingIcon();
+            isErrorActive = true;
+            locationElement.textContent = "Error: unkown location";
+            conditions.textContent = "Please enter a valid location";
+            icon.src = error;
+            weatherDataNumbersOnlyArray.forEach(
+                (element) => (element.textContent = "--"),
+            );
         });
-    });
 }
 
 renderWeatherData(searchLocation, userUnitPreference);
@@ -184,4 +208,8 @@ function setBackgroundImg(icon) {
             body.style.backgroundImage = `url(${clearNightBG})`;
             break;
     }
+}
+
+function setLoadingIcon() {
+    icon.src = loading;
 }
