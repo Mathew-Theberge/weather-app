@@ -125,8 +125,6 @@ function renderWeatherData(location, unit) {
         });
 }
 
-renderWeatherData(searchLocation, userUnitPreference);
-
 function fahrenheitToCelsius(fahrenheit) {
     return (((fahrenheit - 32) * 5) / 9).toFixed(1);
 }
@@ -168,7 +166,6 @@ function setIcon(imgElement, icon) {
             imgElement.src = wind;
             break;
         case "clear-day":
-            console.log(icon);
             imgElement.src = clearDay;
             break;
         case "clear-night":
@@ -213,3 +210,5 @@ function setBackgroundImg(icon) {
 function setLoadingIcon() {
     icon.src = loading;
 }
+
+renderWeatherData(searchLocation, userUnitPreference);

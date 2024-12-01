@@ -53,8 +53,6 @@ export async function setWeatherObj(location, unit) {
         }
         weatherDataObj.weeklyCondition.icons.push(day.icon);
     });
-    console.log(weatherDataObj);
-    console.log(weatherData);
     return weatherDataObj;
 }
 

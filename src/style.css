@@ -3,7 +3,6 @@
     margin: 0;
     box-sizing: border-box;
 }
-
 body {
     flex-direction: column;
     min-height: 100svh;
@@ -11,7 +10,7 @@ body {
     display: flex;
     background-repeat: no-repeat;
     background-size: cover;
-    background-image: url(./images/backgroundImages/partlyCloudyDay.jpg);
+    background-image: url(./images/backgroundImages/clearDay.jpg);
     font-family:
         system-ui,
         -apple-system,
@@ -73,6 +72,7 @@ form {
     justify-self: center;
     border: 3px solid black;
     border-radius: 1rem;
+    justify-content: center;
 }
 
 /* item layout and styling */
